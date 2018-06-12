@@ -178,7 +178,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 for (int i = 0; i < addressList.size(); i++) {
                     Address address = addressList.get(i);
                     LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-                    mMap.addMarker(new MarkerOptions().position(latLng).title(i + ": " + address.getSubThoroughfare()));
+                    mMap.addMarker(new MarkerOptions().position(latLng).title(i + ": " + address.getAddressLine(i)));
                     mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
                 }
@@ -238,7 +238,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
             if (!isGPSEnabled && !isNETWORKEnabled) {
-                Log.d("MYMAPSAPP", "getLocation: try-catch-1: NO PROVIDER ENABLED :((((((");
+                Log.d("MYMAPSAPP", "getLocation: try-catch-1: NO PROVIDER ENABLED");
             } else {
                 if (isNETWORKEnabled) {
                     if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) &&
@@ -396,7 +396,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 Log.d("MYMAPSAPP", "dropAmarker: myLocation is null");
             }
             else {
-                Log.d("MYMAPSAPP", "dropAmarker: IT WORKS");
+                Log.d("MYMAPSAPP", "dropAmarker: success");
 
                 userLocation = new LatLng(myLocation.getLatitude(), myLocation.getLongitude());
                 CameraUpdate update = CameraUpdateFactory.newLatLngZoom(userLocation, MY_LOC_ZOOM_FACTOR);
@@ -449,7 +449,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         }
-        /** if(locationManager != null)
+        /* if(locationManager != null)
          * if (checkSelfPermission fails
          *  return
          * else (myLocation = locationManager.getLastKnownLocation(provider)
