@@ -89,23 +89,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //and displays the message "born here" when tapped
         LatLng tokyo = new LatLng(36, 140);
         mMap.addMarker(new MarkerOptions().position(tokyo).title("Tokyo"));
-        mMap.moveCamera((CameraUpdateFactory.newLatLng(tokyo)));                                    ///////////////////////////////////////////////
-        /**
-         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-         Log.d("MYMAPSAPP", "failed FINE permission check");
-         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 2);
-         }
-         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-         Log.d("MYMAPSAPP", "failed COARSE permission check");
-         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 2);
-         }
-         if ((ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) ||
-         (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)) {
-         mMap.setMyLocationEnabled(true);
-         } */
-
+        mMap.moveCamera((CameraUpdateFactory.newLatLng(tokyo)));
         locationSearch = (EditText) findViewById(R.id.editText_addr);
-
         gotMyLocationOneTime = false;
         getLocation();
 
@@ -449,26 +434,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         }
-        /* if(locationManager != null)
-         * if (checkSelfPermission fails
-         *  return
-         * else (myLocation = locationManager.getLastKnownLocation(provider)
-         * LatLng userLocation = null
-         * if (myLocation == null) print log or toast message
-         * else (
-         *          userLocation = new LatLng(myLocation.getLatitude, myLocation.getLongitude)
-         *          CameraUpdate update = CameraUpdateFactory.new LatLngZoom(userLocation, MY_LOC_ZOOM_FACTOR)
-         *          if (provider == LocationManager.GPS_PROVIDER
-         *                add circle for the marker wit 2 outer rings (red)
-         *                  mMap.addCircle(new CircleOptions())
-         *                        .center(userLocation)
-         *                        .radius(1)
-         *                        .strokeColor(Color.RED)
-         *                        .strokeWidth(2)
-         *                        .fillColor(Color.RED)
-         *          else (add circle for the marker with 2 outer rings (blue)
-         *          mMap.animateCamera(update)
-         */
+
 
     }
 }
